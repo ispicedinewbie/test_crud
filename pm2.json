@@ -1,0 +1,21 @@
+{
+  "apps": [
+    {
+      "name": "test",
+      "script": "./dist/index.js",
+      "watch": false,
+      "max_memory_restart": "4G",
+      "node_args": "--max_old_space_size=4096",
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "loader*"
+      },
+      "env_production": {
+        "NODE_ENV": "production",
+        "DEBUG": false,
+        "MYSQL_PORT": 3306,
+        "MYSQL_HOST": "db_mysql_app"
+      }
+    }
+  ]
+}

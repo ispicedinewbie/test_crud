@@ -1,0 +1,57 @@
+version: '3.4'
+volumes:
+  web_data_test_crud:
+    external: true
+
+services:
+  db:
+    image: mysql
+    container_name: db_mysql_app
+    command: --default-authentication-plugin=mysql_native_password
+    cap_add:
+      - SYS_NICE  # CAP_SYS_NICE
+    environment:
+      MYSQL_ROOT_PASSWORD: user
+      MYSQL_DATABASE: test_db
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+    volumes:
+      - web_data_test_crud:/var/lib/mysql
+    ports:
+      - "9052:3306"
+    restart: unless-stopped
+    networks:
+      - app
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_app
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "9053:80"
+    links:
+      - "db:db"
+    networks:
+      - app
+  
+  app:
+    build: .
+    image: app_test_crud:v0.0.7
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - NODE_ENV=production
+    container_name: apptestcrud
+    ports:
+      - "9050:8080"
+    restart: unless-stopped
+    networks:
+      - app
+networks:
+  app:
+    driver: bridge
