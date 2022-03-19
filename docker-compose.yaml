@@ -39,7 +39,8 @@ services:
       - app
   
   app:
-    build: .
+    build: https://github.com/ispicedinewbie/test_crud.git
+    #build: .
     image: app_test_crud:v0.0.7
     depends_on:
       db:
