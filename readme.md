@@ -11,6 +11,7 @@
  # creation du container (mysql, phpmyadmin, app)
  docker-compose up
 ```
+**Ajouter sudo devant sur mac afin de permettre l'écriture sur le volume**
 
 >***Port extérieur utilisé***
 >>**mysql**: 9052

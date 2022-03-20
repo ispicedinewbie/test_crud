@@ -15,7 +15,7 @@ services:
       MYSQL_DATABASE: test_db
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 10s
+      timeout: 4s
       retries: 10
     volumes:
       - web_data_test_crud:/var/lib/mysql
