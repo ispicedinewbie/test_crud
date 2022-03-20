@@ -41,16 +41,17 @@ __decorate([
 ], BookMark.prototype, "video", void 0);
 __decorate([
     (0, sequelize_typescript_1.HasOne)(() => Photo_1.Photo),
-    __metadata("design:type", Photo_1.Photo
-    // @Column({
-    //   type:DataType.VIRTUAL,
-    //   get(){
-    //     return this.getDataValue('photo') || this.getDataValue('video') //this.photo! || this.video!
-    //   }
-    // })
-    // specificite!:Video | Photo
-    )
+    __metadata("design:type", Photo_1.Photo)
 ], BookMark.prototype, "photo", void 0);
+__decorate([
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.VIRTUAL,
+        get() {
+            return this.getDataValue('photo') ? 'flirck' : 'vimeo';
+        }
+    }),
+    __metadata("design:type", String)
+], BookMark.prototype, "_type", void 0);
 BookMark = __decorate([
     (0, sequelize_typescript_1.Table)({
         timestamps: true

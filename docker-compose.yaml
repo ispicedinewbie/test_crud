@@ -39,7 +39,8 @@ services:
       - app
   
   app:
-    build: https://github.com/ispicedinewbie/test_crud.git
+    build: https://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@github.com/ispicedinewbie/test_crud.git
+    #build: https://github.com/ispicedinewbie/test_crud.git
     #build: .
     image: app_test_crud:v0.0.9
     depends_on:

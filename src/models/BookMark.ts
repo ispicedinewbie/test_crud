@@ -27,6 +27,14 @@ export class BookMark extends Model<BookMark> {
   @HasOne(() => Photo)
   photo?: Photo
 
+  @Column({
+    type:DataType.VIRTUAL,
+    get(){
+      return this.getDataValue('photo') ? 'flirck' : 'vimeo'
+    }
+  })
+  _type!:string
+
   // @Column({
   //   type:DataType.VIRTUAL,
   //   get(){
