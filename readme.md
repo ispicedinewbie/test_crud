@@ -38,9 +38,9 @@
 
 @params
 ```json
-// type vimeo
+#type vimeo
 { "url": "https://vimeo.com/565486457" }
-// ou type flirk
+# ou type flirk
 { "url": "http://www.flickr.com/photos/bees/2341623661/" }
 ```
 
@@ -130,7 +130,7 @@ Réponse pour un type  vidéo
  - GET /bookmark/
  Récupère la liste des bookmarks 
  ```json
-	[{},{}...]
+	[{},{}, "..."]
  ```
 
 - PUT /bookmark/edit/:id
@@ -142,9 +142,9 @@ Réponse pour un type  vidéo
 	"author": "..."
 	"video": {
 		"width": 200,
-		....
-	}
-	...
+		"...."
+	},
+	"..."
 }
 ```
 
