@@ -41,7 +41,7 @@ services:
   app:
     build: https://github.com/ispicedinewbie/test_crud.git
     #build: .
-    image: app_test_crud:v0.0.7
+    image: app_test_crud:v0.0.9
     depends_on:
       db:
         condition: service_healthy
