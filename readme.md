@@ -150,10 +150,10 @@ Réponse pour un type  vidéo
 
 Retour 
 ```json
-{ save: true }
+{ "save": true }
 ```
 
 - DELETE /bookmark/delete/:id
 ```json
-{ save: true }
+{ "save": true }
 ```
