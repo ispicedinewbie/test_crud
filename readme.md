@@ -6,7 +6,9 @@
 
  Ligne de commande
  ```bash
+ # creation du volume persistant
  docker volume create web_data_test_crud
+ # creation du container (mysql, phpmyadmin, app)
  docker-compose up
 ```
 
