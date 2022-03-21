@@ -24,7 +24,7 @@ export class BookMarkController {
   private add = async (req: Request, res: Response, next: NextFunction):Promise<void> => {
     try {
       const video = await this.bookMarkService.add(req.body)
-      res.send(video)
+      res.status(201).send(video)
     } catch (e) {
       next(e)
     }
@@ -42,9 +42,9 @@ export class BookMarkController {
   private read = async (req: Request, res: Response, next: NextFunction):Promise<void> => {
     try {
       const bookMark = await this.bookMarkService.read(req.params.id)
-      res.send(bookMark)
+      res.status(bookMark ? 200 : 204).send(bookMark)
     } catch (e) {
-      next(e)
+      next(e);
     }
   }
 

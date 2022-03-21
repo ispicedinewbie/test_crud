@@ -1,9 +1,11 @@
 import bodyParser from "body-parser"
 import compression from "compression"
-import express, { NextFunction } from "express"
+import express from "express"
 import { db } from "../constants/config"
 import { BookMarkController } from "../controller/bookmark.controller"
 import { BookMarkService } from "../services/bookmark.service"
+import HttpException from "./HttpException"
+
 
 class App {
   public app: express.Application
@@ -41,10 +43,17 @@ class App {
     this.app.use("/bookmark", bookmarkController.router)
   }
 
-  private setError() {
-    this.app.use((req, res, next) => {
-      // res.status(500).json({'message': 'Une erreur s’est produit', 'detail': res.locals })
-    })
+  private setError(){
+    this.app.use((error: HttpException, request: express.Request, response: express.Response, next: express.NextFunction):void => {
+      const status = error.status || 500;
+      const message = error.message || 'Something went wrong'
+      response
+        .status(status)
+        .send({
+          status,
+          message
+        })
+    })  
   }
 }
 

@@ -51,8 +51,15 @@ class App {
         this.app.use("/bookmark", bookmarkController.router);
     }
     setError() {
-        this.app.use((req, res, next) => {
-            // res.status(500).json({'message': 'Une erreur s’est produit', 'detail': res.locals })
+        this.app.use((error, request, response, next) => {
+            const status = error.status || 500;
+            const message = error.message || 'Something went wrong';
+            response
+                .status(status)
+                .send({
+                status,
+                message
+            });
         });
     }
 }

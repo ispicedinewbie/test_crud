@@ -8,7 +8,7 @@ describe('Bookmark API', () => {
     return request
       .post('/bookmark/add')
       .send(data)
-      .expect(200)
+      .expect(201)
       .then((res) => {
         assert.isNotEmpty(res.body.video)
         assert.hasAnyKeys(res.body, 'id')
@@ -22,7 +22,7 @@ describe('Bookmark API', () => {
     return request
       .post('/bookmark/add')
       .send(data)
-      .expect(200)
+      .expect(201)
       .then((res) => {
         assert.isNotEmpty(res.body.photo)
         assert.hasAnyKeys(res.body, 'id')

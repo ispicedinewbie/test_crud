@@ -22,7 +22,7 @@ class BookMarkController {
         this.add = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const video = yield this.bookMarkService.add(req.body);
-                res.send(video);
+                res.status(201).send(video);
             }
             catch (e) {
                 next(e);
@@ -40,7 +40,7 @@ class BookMarkController {
         this.read = (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             try {
                 const bookMark = yield this.bookMarkService.read(req.params.id);
-                res.send(bookMark);
+                res.status(bookMark ? 200 : 204).send(bookMark);
             }
             catch (e) {
                 next(e);
